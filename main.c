@@ -17,13 +17,14 @@ struct Persona{
 };
 struct Persona crearPersona();
 void imprimirPersona(struct Persona personaImp);
+int calcularEdad(struct Persona personaCal, struct Fecha hoy);
 
 int main() {
     struct Persona perIng=crearPersona();
     imprimirPersona(perIng);
     struct Fecha hoy={17,7,2023};
-    int edad = hoy.anio-perIng.fechaNacimiento.anio;
-    printf("Edad: %d",edad);
+    int edad=calcularEdad(perIng,hoy);
+    printf("Su edad es: %d", edad);
     return 0;
 }
 
@@ -69,4 +70,9 @@ void imprimirPersona(struct Persona personaImp){
     printf("Fecha nacimiento: %d/%d/%d\n",personaImp.fechaNacimiento.dia,personaImp.fechaNacimiento.mes,personaImp.fechaNacimiento.anio);
     printf("Género: %c\n",personaImp.genero);
     printf("Estatura: %f\n",personaImp.estatura);
+}
+
+int calcularEdad(struct Persona personaCal, struct Fecha hoy){
+    int edad = hoy.anio-personaCal.fechaNacimiento.anio;
+    return edad;
 }
